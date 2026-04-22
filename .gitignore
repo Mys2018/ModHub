@@ -1,0 +1,4 @@
+/services/core-api/.env
+.idea/
+node_modules/
+.env
