@@ -1,0 +1,15 @@
+:root {
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
+}
+
+#root {
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+}
