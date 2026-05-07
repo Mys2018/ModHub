@@ -1,0 +1,86 @@
+:root {
+  font-family: 'Noto', serif;
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Noto', serif;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: var(--h1);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--h2);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--h3);
+  font-weight: 700;
+}
+
+h4 {
+  font-size: var(--h4);
+  font-weight: 400;
+}
+
+h5 {
+  font-size: var(--h5);
+  font-weight: 400;
+}
+
+h6 {
+  font-size: var(--h6);
+  font-weight: 400;
+}
+
+body, p {
+  font-size: var(--p);
+  font-weight: 400;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+picture {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+a {
+  color: currentColor;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}

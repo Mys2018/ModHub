@@ -1,0 +1,47 @@
+:root {
+  --bg-color: rgb(26, 26, 26);
+  --text-color: rgb(241, 245, 249);
+  --text-sec-color: rgb(141, 144, 147);
+  --primary-color: rgb(241, 132, 78);
+  --dark-primary-color: rgb(98, 56, 39);
+  --sec-color: rgb(36, 36, 36);
+  --outline-color: rgb(48, 48, 48);
+
+  --h1: 36px;
+  --h2: 30px;
+  --h3: 26px;
+  --h4: 24px;
+  --h5: 20px;
+  --h6: 16px;
+  --p : 16px;
+
+  --border-radius: 5px;
+
+  --light-green-color: #75FF9E;
+  --light-red-color: #FF4B4B;
+  --blue-grey-color: #6a6d81;
+  --quiet-grey-color: #626262;
+
+  --deep-dark-blue-color: #2a2236;
+  --dark-blue-color: #413b58;
+  --dark-blue-color-out: #6c658a;
+
+  --hit-gradient: linear-gradient(45deg, #FFFCF8, #87D5D6, #FC6CF3, #D4A7D1);
+
+}
+
+/*:root.theme-dark {*/
+/*  --bg-color: rgb(26, 26, 26);*/
+/*  --text-color: rgb(241, 245, 249);*/
+/*  --primary-color: rgb(40, 190, 70);*/
+/*  --sec-color: rgb(36, 36, 36);*/
+/*  --outline-color: rgb(48, 48, 48);*/
+/*}*/
+
+/*:root.theme-light {*/
+/*  --bg-color: rgb(246, 245, 248);*/
+/*  --text-color: rgb(15, 23, 42);*/
+/*  --primary-color: rgb(40, 190, 70);*/
+/*  --sec-color: rgb(255, 255, 255);*/
+/*  --outline-color: rgb(224, 224, 224);*/
+/*}*/
