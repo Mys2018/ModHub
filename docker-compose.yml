@@ -48,7 +48,6 @@ services:
       KAFKA_NODE_ID: 1
       KAFKA_PROCESS_ROLES: broker,controller
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
-      # Говорим API, чтобы он искал Кафку по этому адресу:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
@@ -57,5 +56,36 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
 
+  #  S3 СОВМЕСТИМОЕ ХРАНИЛИЩЕ MINIO
+  minio:
+    image: minio/minio:latest
+    container_name: modhub_minio
+    restart: always
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: supersecretpassword
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+
+  #  ВСПОМОГАЮЩИЙ КОНТЕЙНЕР MINIO
+  minio-init:
+    image: minio/mc:latest
+    container_name: modhub_minio_init
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      sleep 5;
+      mc alias set myminio http://minio:9000 admin supersecretpassword;
+      mc mb myminio/mods || true; 
+      mc anonymous set download myminio/mods;
+      exit 0;
+      "
+
 volumes:
   pg_data:
+  minio_data:

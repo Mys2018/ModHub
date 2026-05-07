@@ -1,0 +1,70 @@
+.headerContainer {
+  display: flex;
+  background-color: var(--sec-color);
+  padding: 12px;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--outline-color);
+}
+
+.logo {
+  height: 42px;
+}
+
+.avatar{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.avatarStroke {
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  background: var(--hit-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: var(--primary-color);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.userContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-color);
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--quiet-grey-color);
+}
+
+.logOut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plusIcon {
+  stroke: var(--quiet-grey-color);
+}
+
+.logOutIcon{
+  stroke: var(--quiet-grey-color);
+}
+
+
