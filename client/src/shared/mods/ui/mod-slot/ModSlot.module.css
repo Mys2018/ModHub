@@ -1,0 +1,74 @@
+.modSlot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  padding: 12px;
+  background-color: var(--sec-color);
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid var(--dark-primary-color);
+  gap: 8px;
+
+  transition: border 0.2s ease-in-out;
+
+  &:hover {
+    border: 2px solid var(--primary-color);
+  }
+}
+
+.title {
+  color: var(--primary-color);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 14px;
+
+  flex-grow: 1;
+}
+
+.version {
+  font-size: 14px;
+  color: var(--text-sec-color);
+}
+
+.author {
+  font-size: 14px;
+  color: var(--text-sec-color);
+}
+
+.created {
+  font-size: 14px;
+  color: var(--text-sec-color);
+}
+
+.modInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status {
+  position: absolute;
+  font-size: 14px;
+  right: 12px;
+  bottom: 12px;
+  padding: 4px 24px;
+  border-radius: 8px;
+}
+
+.pending {
+  background-color: var(--quiet-grey-color);
+}
+
+.approved {
+  background-color: var(--green-color);
+}
+
+.rejected {
+  background-color: var(--light-red-color);
+}
+
+

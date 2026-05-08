@@ -86,6 +86,31 @@ services:
       exit 0;
       "
 
+  # АНТИВИРУС CLAMAV
+  clamav:
+    image: clamav/clamav:latest
+    container_name: modhub_clamav
+    restart: always
+    ports:
+      - "3310:3310"
+
+  # СЕРВИС ДЛЯ РАБОТЫ CLAMAV
+  scanner-worker:
+    build:
+      context: ./services/scanner-worker
+    container_name: modhub_scanner_worker
+    restart: always
+    depends_on:
+      - kafka
+      - postgres
+      - clamav
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_NAME=${POSTGRES_DB}
+      - DB_PORT=5432
+
 volumes:
   pg_data:
   minio_data:

@@ -5,6 +5,7 @@ const authMiddleware = require('../middleware/auth.middleware')
 const upload = require('../middleware/upload.middleware')
 const { uploadFile } = require('../storage/minio.client')
 const path = require("node:path");
+const { sendModForScan } = require('../kafka/producer')
 
 const router = express.Router()
 
@@ -36,7 +37,7 @@ router.post('/', authMiddleware, upload.single('mod_file'), async (req, res) => 
 
     const savedMod = result.rows[0]
 
-    // TODO ДЛЯ КАФКИ
+    await sendModForScan(newModId, fileUrl)
 
     res.status(201).json({
       message: "Мод загружен и отправлен на проверку",
