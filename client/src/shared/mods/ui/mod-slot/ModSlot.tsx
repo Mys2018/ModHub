@@ -1,4 +1,5 @@
 import styles from './ModSlot.module.css'
+import {getStatusName} from "../../model/types.ts";
 
 interface ModSlotProps {
   title: string,
@@ -6,25 +7,17 @@ interface ModSlotProps {
   version: string,
   author: string,
   status: string,
-  created_at: string
+  created_at: string,
+  onClick: () => void
 }
 
-const getStatusName = (status: string) => {
-  switch (status) {
-    case 'approved':
-      return 'Проверен'
-    case 'rejected':
-      return 'Опасен'
-    case 'pending':
-      return 'В ожидании'
-  }
-}
+
 
 export const ModSlot = (
-    {title, description, version, author, status, created_at}: ModSlotProps
+    {title, description, version, author, status, created_at, onClick}: ModSlotProps
 ) => {
   return (
-      <div className={styles.modSlot}>
+      <div className={styles.modSlot} onClick={onClick}>
         <h5 className={styles.title}>{title}</h5>
         <p className={styles.description}>{description}</p>
         <div className={styles.modInfo}>

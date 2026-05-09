@@ -110,16 +110,16 @@ const startWorker = async () => {
           }
 
           await pool.query(
-              'UPDATE mods SET status = $1 WHERE id = $2',
-              [newStatus, eventData.modId]
+              'UPDATE mod_versions SET status = $1 WHERE id = $2',
+              [newStatus, eventData.versionId]
           )
 
           console.log(`[CLAMAV] Статус у  ${eventData.modId} изменен на ${newStatus}`)
         } catch (e) {
           console.error(`[CLAMAV] Сбой во время проверки ${eventData.modId}`, e.message)
           await pool.query(
-              "UPDATE mods SET status = 'error' WHERE id = $1",
-              [eventData.modId]
+              "UPDATE mod_versions SET status = 'error' WHERE id = $1",
+              [eventData.versionId]
           )
         }
       }

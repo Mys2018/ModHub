@@ -6,6 +6,7 @@ import {ProtectedRoute} from '../../features/protected-route';
 import {NotFoundPage} from "../../features/pages/not-found-page";
 import {ModLoadPage} from "../../features/pages/mod-load-page";
 import {ProfilePage} from "../../features/pages/profile-page";
+import {ModInfoPage} from "../../features/pages/mod-info-page";
 
 export const routes = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ export const routes = createBrowserRouter([
                     {
                         path: 'profile',
                         element: <ProfilePage/>
+                    },
+                    {
+                        path: 'mods/:id',
+                        element: <ModInfoPage/>
                     }
                 ]
             }

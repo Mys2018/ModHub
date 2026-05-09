@@ -1,0 +1,151 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 120px;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 12px;
+  background-color: var(--sec-color);
+  border-radius: 12px;
+  border: 2px solid var(--outline-color);
+
+}
+
+.title {
+  font-size: 22px;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.author, .updated {
+  font-size: 16px;
+  color: var(--text-sec-color);
+}
+
+.description {
+  font-size: 16px;
+}
+
+.modHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+
+.version, .device, .android {
+  font-size: 16px;
+  color: var(--text-sec-color);
+}
+
+.desc {
+  color: var(--text-sec-color);
+}
+
+.versionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px
+}
+
+.versionsTitle {
+  font-size: 22px;
+
+}
+
+.versionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-content: center;
+}
+
+.modVersion {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border: 2px solid var(--dark-primary-color);
+  gap: 8px;
+  border-radius: 8px;
+  /*cursor: pointer;*/
+
+  transition: border 0.2s ease-in-out;
+
+  /*&:hover {*/
+  /*  border: 2px solid var(--primary-color);*/
+  /*}*/
+}
+
+.versionActions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.versionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-content: center;
+  justify-content: center;
+}
+
+.versionSlot, .deviceSlot, .androidSlot {
+  font-size: 14px;
+  color: var(--text-sec-color);
+}
+
+.versionSlot span, .deviceSlot span, .androidSlot span {
+  color: var(--text-color);
+}
+
+.status {
+  font-size: 14px;
+  padding: 4px 24px;
+  border-radius: 8px;
+}
+
+.pending {
+  background-color: var(--quiet-grey-color);
+}
+
+.approved {
+  background-color: var(--green-color);
+}
+
+.rejected {
+  background-color: var(--light-red-color);
+}
+
+.downloadButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 24px;
+  text-decoration: none;
+
+  color: var(--primary-color);
+
+  border-radius: 8px;
+
+  border: 2px solid var(--dark-primary-color);
+  cursor: pointer;
+
+  transition: border 0.2s ease-in-out;
+
+  &:hover {
+    border: 2px solid var(--primary-color);
+  }
+}
+
+.unactive {
+  border: 2px solid var(--quiet-grey-color);
+  color: var(--quiet-grey-color);
+  cursor: default;
+  &:hover {
+    border: 2px solid var(--quiet-grey-color);
+  }
+}

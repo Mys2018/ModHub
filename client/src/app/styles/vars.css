@@ -26,10 +26,16 @@
   --border-radius: 5px;
 
   --light-green-color: #75FF9E;
-  --green-color: #21883f;
-  --light-red-color: #FF4B4B;
+  --green-color: #2e4630;
+  --light-red-color: #d31313;
   --blue-grey-color: #6a6d81;
-  --quiet-grey-color: #626262;
+  --quiet-grey-color: #3a3737;
+
+  /*--light-green-color: #75FF9E;*/
+  /*--green-color: #21883f;*/
+  /*--light-red-color: #FF4B4B;*/
+  /*--blue-grey-color: #6a6d81;*/
+  /*--quiet-grey-color: #626262;*/
 
   --deep-dark-blue-color: #2a2236;
   --dark-blue-color: #413b58;

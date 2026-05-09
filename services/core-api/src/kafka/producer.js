@@ -36,18 +36,18 @@ const connectionProducer = async () => {
   }
 }
 
-const sendModForScan = async (modId, fileUrl) => {
+const sendModForScan = async (modId, versionId, fileUrl) => {
   try {
     await producer.send({
       topic: 'mod-scans',
       messages: [
         {
           key: modId,
-          value: JSON.stringify({event: "MOD-UPLOADED", modId, fileUrl})
+          value: JSON.stringify({event: "MOD-UPLOADED", modId, versionId, fileUrl})
         }
       ]
     })
-    console.log("[KAFKA] — ", modId, ' | ', fileUrl)
+    console.log("[KAFKA] — ", modId, ' | ', versionId, ' | ', fileUrl)
     console.log('[KAFKA] Мод отправлен на сканирование')
   } catch (e) {
     console.error('[KAFKA] Ошибка при отправке мода на сканирование')

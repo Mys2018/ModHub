@@ -1,0 +1,164 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 120px;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mainContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: var(--sec-color);
+}
+
+.titleProfile {
+  padding-bottom: 12px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px
+}
+
+.infoProfile {
+  display: flex;
+  gap: 12px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+}
+
+.usernameAndEmail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.usernameAndEmail p {
+  font-size: 16px;
+  color: var(--text-sec-color);
+}
+
+.bold {
+  font-size: 22px;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.titleMyMods {
+  padding-left: 12px;
+}
+
+.modsList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px;
+}
+
+.modContainer {
+  position: relative;
+
+  width: 300px;
+  display: flex;
+  padding: 12px;
+
+  border-radius: 8px;
+  border: 2px solid var(--dark-primary-color);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-size: 18px;
+  color: var(--primary-color);
+  font-weight: bold;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.version, .createdAt {
+  font-size: 14px;
+  color: var(--text-sec-color)
+}
+
+.modInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0px
+}
+
+.status {
+  display: flex;
+  width: 130px;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  padding: 4px 24px;
+  border-radius: 8px;
+}
+
+.pending {
+  background-color: var(--quiet-grey-color);
+}
+
+.approved {
+  background-color: var(--green-color);
+}
+
+.rejected {
+  background-color: var(--light-red-color);
+}
+
+.buttonContainer {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  align-items: end;
+  justify-content: end;
+  bottom: 12px;
+  right: 12px;
+}
+
+.deleteButton, .plusVersionButton {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  border-radius: 8px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: #9f1e1e;
+}
+
+.plusVersionButton {
+  background-color: #676060;
+}

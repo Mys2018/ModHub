@@ -12,7 +12,18 @@ interface LoginResponse {
   user: User
 }
 
+interface UserRegisterParams {
+  username: string;
+  email: string;
+  password: string;
+}
+
 export const login = async (params: UserLoginParams) => {
   const response = await api.post<LoginResponse>('/auth/login', params)
   return response.data
+}
+
+export const register = async (params: UserRegisterParams) => {
+  const response = await api.post('/auth/register', params);
+  return response.data;
 }

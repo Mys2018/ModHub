@@ -1,0 +1,1 @@
+export { ModInfoPage } from './ModInfoPage.tsx'

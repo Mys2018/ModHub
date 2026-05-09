@@ -1,13 +1,16 @@
-.mainContainer {
+.overlay {
+  position: absolute;
   display: flex;
   flex-direction: column;
 
   width: 100%;
-  flex: 1;
+  height: 100%;
 
   align-items: center;
   justify-content: center;
 
+  background-color: rgb(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
   gap: 12px;
 }
 

@@ -3,6 +3,16 @@
   flex-direction: column;
   gap: 12px;
   padding: 12px 120px;
+
+  flex: 1;
+  overflow-y: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mainContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .modGrid {
@@ -11,4 +21,16 @@
   height: 100%;
   gap: 12px;
   grid-template-columns: repeat(4, 1fr);
+}
+
+@media (width <= 1200px) {
+  .modGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width <= 768px) {
+  .modGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
