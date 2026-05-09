@@ -11,16 +11,16 @@
 }
 
 .avatar{
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
 }
 
 .avatarStroke {
   width: 32px;
   height: 32px;
-  padding: 2px;
-  background: var(--hit-gradient);
+  padding: 5px;
+  background: var(--primary-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -42,7 +42,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  color: var(--text-color);
+  color: var(--text-sec-color);
+  cursor: pointer;
 }
 
 .addButton {

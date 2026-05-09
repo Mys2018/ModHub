@@ -11,7 +11,7 @@ export const CatalogPage = () => {
     queryFn: getAllMods
   })
 
-  console.log(mods.data)
+  // console.log(mods.data)
 
   return (
       <main className={styles.mainContainer}>
@@ -22,7 +22,7 @@ export const CatalogPage = () => {
                 title={mod.title}
                 description={mod.description}
                 version={mod.version}
-                author={mod.author}
+                author={mod.author_name}
                 status={mod.status}
                 created_at={'09.05.2026'}
             />

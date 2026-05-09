@@ -7,13 +7,15 @@ interface HeaderProps {
   toLogout: () => void
   navigateToModLoadPage: () => void
   navigateToMainPage: () => void
+  navigateToProfilePage: () => void
 }
 
 export const Header = ({
     userName,
     toLogout,
     navigateToModLoadPage,
-    navigateToMainPage
+    navigateToMainPage,
+    navigateToProfilePage
 }: HeaderProps) => {
   return(
       <header className={styles.headerContainer}>
@@ -32,7 +34,7 @@ export const Header = ({
           {"Загрузить мод"}
         </button>
 
-        <div className={styles.userContainer}>
+        <div className={styles.userContainer} onClick={navigateToProfilePage}>
           <div className={styles.avatarStroke}>
             <img className={styles.avatar} src={Avatar} alt={"Аватар"}/>
           </div>

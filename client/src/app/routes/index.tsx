@@ -5,6 +5,7 @@ import {MainLayout} from "../../features/pages/main-layout";
 import {ProtectedRoute} from '../../features/protected-route';
 import {NotFoundPage} from "../../features/pages/not-found-page";
 import {ModLoadPage} from "../../features/pages/mod-load-page";
+import {ProfilePage} from "../../features/pages/profile-page";
 
 export const routes = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ export const routes = createBrowserRouter([
                     {
                         path: 'load',
                         element: <ModLoadPage/>
+                    },
+                    {
+                        path: 'profile',
+                        element: <ProfilePage/>
                     }
                 ]
             }

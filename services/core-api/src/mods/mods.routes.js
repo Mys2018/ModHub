@@ -12,7 +12,7 @@ const router = express.Router()
 // ОТПРАВИТЬ МОД
 router.post('/', authMiddleware, upload.single('mod_file'), async (req, res) => {
   try {
-    const { title, description, version } = req.body
+    const { title, description, version} = req.body
     const file = req.file
 
     console.log('BODY:', req.body);
@@ -23,7 +23,7 @@ router.post('/', authMiddleware, upload.single('mod_file'), async (req, res) => 
     }
 
     const newModId = crypto.randomUUID()
-    const authorId = req.body.id
+    const authorId = req.user.id
 
     const ext = path.extname(file.originalname)
     const uniqueFileName = `${newModId}${ext}`
@@ -52,8 +52,19 @@ router.post('/', authMiddleware, upload.single('mod_file'), async (req, res) => 
 // ПОЛУЧИТЬ СПИСОК МОДОВ
 router.get('/', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM mods ORDER BY created_at DESC');
+    const query = `
+        SELECT
+            mods.*,
+            users.username AS author_name
+        FROM mods
+        LEFT JOIN users ON mods.author_id = users.id
+        ORDER BY mods.created_at DESC
+    `;
+
+    const result = await pool.query(query)
+
     res.json(result.rows);
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Ошибка при получении списка модов' });

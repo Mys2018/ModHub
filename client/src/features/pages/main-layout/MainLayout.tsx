@@ -22,6 +22,11 @@ export const MainLayout = () => {
                 navigate("/mods")
               }
             }
+            navigateToProfilePage={
+              () => {
+                navigate('/profile')
+              }
+            }
         />
         <Outlet/>
       </main>
