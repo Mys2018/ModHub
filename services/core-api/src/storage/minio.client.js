@@ -23,4 +23,13 @@ const uploadFile = async (fileName, fileBuffer, mimeType) => {
   }
 }
 
-module.exports = { uploadFile }
+const deleteFile = async (fileName) => {
+  try {
+    await minioClient.removeObject(BUCKET_NAME, fileName)
+    console.log(`[MINIO] Файл ${fileName} удален`)
+  } catch (e) {
+    console.error(`[MINIO] Ошибка при удалении файла ${fileName}:`, err);
+  }
+}
+
+module.exports = { uploadFile, deleteFile }

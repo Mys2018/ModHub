@@ -1,9 +1,8 @@
 import styles from './LoginPage.module.css'
-import {useAuthStore} from "../../../shared/user/model/store";
-import {Navigate} from "react-router-dom";
-import {useState} from "react";
-import {login, register} from "../../../shared/user/api/requests.ts";
-import * as React from "react";
+import { useAuthStore } from "../../../shared/user/model/store";
+import { Navigate } from "react-router-dom";
+import { useState } from "react";
+import { login, register } from "../../../shared/user/api/requests.ts";
 
 export const LoginPage = () => {
   const store = useAuthStore()
@@ -27,9 +26,9 @@ export const LoginPage = () => {
       if (isLoginMode) {
         const response = await login({ email, password })
 
-        if (response.message === 'Успешный вход') {
-          store.setToken(response.token)
-          store.setUser(response.user)
+        if (response.status === 200) {
+          store.setToken(response.data.token)
+          store.setUser(response.data.user)
           store.setStatus('authenticated')
         } else {
           setMessage('Неверный логин или пароль')
@@ -37,7 +36,7 @@ export const LoginPage = () => {
       } else {
         const response = await register({ username, email, password })
 
-        if (response.message === 'Пользователь создан') {
+        if (response.status === 200) {
           setMessage('Регистрация успешна! Теперь вы можете войти.')
           setIsLoginMode(true)
           setPassword('')
@@ -58,61 +57,61 @@ export const LoginPage = () => {
   }
 
   return (
-      <main className={styles.mainContainer}>
+    <main className={styles.mainContainer}>
 
-        <form className={styles.form} onSubmit={handleClick}>
-          <h3 className={styles.title}>{isLoginMode ? 'Вход' : 'Регистрация'}</h3>
+      <form className={styles.form} onSubmit={handleClick}>
+        <h3 className={styles.title}>{isLoginMode ? 'Вход' : 'Регистрация'}</h3>
 
-          {!isLoginMode && (
-              <div className={styles.usernameForm}>
-                <label className={styles.label}>Введите никнейм</label>
-                <input
-                    id='username'
-                    className={styles.input}
-                    type='text'
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required={!isLoginMode}
-                />
-              </div>
-          )}
-
-          <div className={styles.emailForm}>
-            <label className={styles.label}>Введите почту</label>
+        {!isLoginMode && (
+          <div className={styles.usernameForm}>
+            <label className={styles.label}>Введите никнейм</label>
             <input
-                id='email'
-                className={styles.input}
-                type='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+              id='username'
+              className={styles.input}
+              type='text'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required={!isLoginMode}
             />
           </div>
+        )}
 
-          <div className={styles.passwordForm}>
-            <label className={styles.label}>Введите пароль</label>
-            <input
-                id='password'
-                className={styles.input}
-                type='password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+        <div className={styles.emailForm}>
+          <label className={styles.label}>Введите почту</label>
+          <input
+            id='email'
+            className={styles.input}
+            type='email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-          {message && <p className={styles.messageText}>{message}</p>}
+        <div className={styles.passwordForm}>
+          <label className={styles.label}>Введите пароль</label>
+          <input
+            id='password'
+            className={styles.input}
+            type='password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-          <p className={styles.registerText}>
-            {isLoginMode ? 'Нет аккаунта? ' : 'Уже есть аккаунт? '}
-            <a href="#" onClick={toggleMode}>
-              {isLoginMode ? 'Зарегистрируйтесь' : 'Войдите'}
-            </a>
-          </p>
+        {message && <p className={styles.messageText}>{message}</p>}
 
-          <button className={styles.button} type='submit'>
-            {isLoginMode ? 'Вход' : 'Зарегистрироваться'}
-          </button>
-        </form>
+        <p className={styles.registerText}>
+          {isLoginMode ? 'Нет аккаунта? ' : 'Уже есть аккаунт? '}
+          <a href="#" onClick={toggleMode}>
+            {isLoginMode ? 'Зарегистрируйтесь' : 'Войдите'}
+          </a>
+        </p>
 
-      </main>
+        <button className={styles.button} type='submit'>
+          {isLoginMode ? 'Вход' : 'Зарегистрироваться'}
+        </button>
+      </form>
+
+    </main>
   )
 }

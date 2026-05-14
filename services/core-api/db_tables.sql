@@ -1,3 +1,13 @@
+CREATE TABLE users
+(
+    id            UUID PRIMARY KEY,
+    username      VARCHAR(50) UNIQUE NOT NULL,
+    email         VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role          VARCHAR(50) DEFAULT 'user',
+    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE mods
 (
     id          UUID PRIMARY KEY,

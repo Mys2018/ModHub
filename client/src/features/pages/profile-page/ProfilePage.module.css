@@ -7,6 +7,8 @@
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+
+
 }
 
 .mainContainer::-webkit-scrollbar {
@@ -20,6 +22,8 @@
   padding: 12px;
   border-radius: 8px;
   background-color: var(--sec-color);
+
+  border: 2px solid var(--outline-color);
 }
 
 .titleProfile {
@@ -63,14 +67,29 @@
   font-weight: bold;
 }
 
-.titleMyMods {
-  padding-left: 12px;
+.myModsTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.plusIcon {
+  stroke: var(--text-sec-color);
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--text-sec-color);
+  padding: 0 12px;
 }
 
 .modsList {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   padding: 12px;
 }
@@ -78,7 +97,7 @@
 .modContainer {
   position: relative;
 
-  width: 300px;
+  width: 100%;
   display: flex;
   padding: 12px;
 
@@ -111,7 +130,6 @@
 .modInfo {
   display: flex;
   flex-direction: column;
-  gap: 0px
 }
 
 .status {
@@ -160,5 +178,5 @@
 }
 
 .plusVersionButton {
-  background-color: #676060;
+  background-color: var(--primary-color);
 }

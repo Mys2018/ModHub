@@ -1,4 +1,4 @@
-import { create} from "zustand";
+import { create } from "zustand";
 
 export type ModalMode = 'create' | 'add_version'
 
@@ -7,7 +7,7 @@ interface ModalState {
   mode: ModalMode,
   modId: string | null,
 
-  initialData? : {
+  initialData?: {
     title?: string,
     description?: string,
     targetDevice?: string,
@@ -16,13 +16,13 @@ interface ModalState {
 
   openCreateModal: () => void
   openAddVersionModal: (
-      modId: string,
-      initialData: {
-        title: string,
-        description: string,
-        targetDevice: string,
-        androidVersion: string
-      }
+    modId: string,
+    initialData: {
+      title: string,
+      description: string,
+      targetDevice: string,
+      androidVersion: string
+    }
   ) => void,
   closeModal: () => void
 }

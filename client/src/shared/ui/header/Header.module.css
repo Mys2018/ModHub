@@ -46,14 +46,6 @@
   cursor: pointer;
 }
 
-.addButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  color: var(--quiet-grey-color);
-}
-
 .logOut {
   display: flex;
   align-items: center;

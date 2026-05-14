@@ -22,3 +22,8 @@ export const uploadNewVersion = async (modId: string, formData: FormData) => {
   const response = await api.post(`/mods/${modId}/versions`, formData);
   return response.data;
 }
+
+export const deleteMod = async (modId: string) => {
+  const response = await api.delete(`/mods/${modId}`);
+  return response.data;
+}

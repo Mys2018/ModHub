@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from "zustand/middleware";
-import type {User} from "../types.ts";
+import type { User } from "../types.ts";
 
 export type AuthStatus = 'idle' | 'loading' | 'authenticated' | 'unauthenticated';
 
@@ -20,32 +20,37 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>()(
   persist(
-      (set) => ({
+    (set) => ({
+      status: 'idle',
+      setStatus: (status) => set({ status }),
+
+      token: '',
+      setToken: (token) => set({ token }),
+
+      user: {
+        id: '',
+        email: '',
+        username: ''
+      },
+      setUser: (user) => set({ user }),
+
+      logout: () => set({
         status: 'idle',
-        setStatus: (status) => set({ status }),
-
         token: '',
-        setToken: (token) => set({token}),
-
         user: {
           id: '',
           email: '',
           username: ''
-        },
-        setUser: (user) => set({user}),
-
-        logout: () => set({
-          status: 'idle',
-          token: '',
-          user: {
-            id: '',
-            email: '',
-            username: ''
-          }
-        }),
+        }
       }),
-      {
-        name: 'modhub-auth',
+    }),
+    {
+      name: 'modhub-auth',
+      onRehydrateStorage: (state) => {
+        if (state?.token) {
+          state.status = 'authenticated'
+        }
       }
+    }
   )
 );

@@ -9,11 +9,24 @@
 
   scrollbar-width: none;
   -ms-overflow-style: none;
+
 }
 
 .mainContainer::-webkit-scrollbar {
   display: none;
 }
+
+.catalogContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: var(--sec-color);
+
+  border: 2px solid var(--outline-color);
+}
+
 
 .modGrid {
   display: grid;
@@ -21,6 +34,7 @@
   height: 100%;
   gap: 12px;
   grid-template-columns: repeat(4, 1fr);
+  min-width: 0
 }
 
 @media (width <= 1200px) {

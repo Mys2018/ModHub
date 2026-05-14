@@ -3,7 +3,7 @@ const crypto = require('crypto')
 const pool = require('../db')
 const authMiddleware = require('../middleware/auth.middleware')
 const upload = require('../middleware/upload.middleware')
-const { uploadFile } = require('../storage/minio.client')
+const { uploadFile, deleteFile } = require('../storage/minio.client')
 const path = require("node:path");
 const { sendModForScan } = require('../kafka/producer')
 
@@ -225,6 +225,84 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Ошибка при получении мода' });
+  }
+});
+
+// УДАЛИТЬ МОД И ЕГО ВЕРСИИ
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    const modId = req.params.id;
+    const userId = req.user.id;
+
+    const modCheck = await pool.query(
+        'SELECT id FROM mods WHERE id = $1 AND author_id = $2',
+        [modId, userId]
+    );
+
+    if (modCheck.rows.length === 0) {
+      return res.status(403).json({ message: "Мод не найден или у вас нет прав на его удаление" });
+    }
+
+    const versions = await pool.query(
+        'SELECT file_path FROM mod_versions WHERE mod_id = $1',
+        [modId]
+    );
+
+    await pool.query('DELETE FROM mods WHERE id = $1', [modId]);
+
+    for (const row of versions.rows) {
+      if (row.file_path) {
+        const fileName = row.file_path.split('/').pop();
+        await deleteFile(fileName);
+      }
+    }
+
+    res.json({ message: "Мод и все связанные файлы успешно удалены" });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Ошибка сервера при удалении мода' });
+  }
+});
+
+// УДАЛИТЬ ВЕРСИЮ МОДА
+router.delete('/:modId/versions/:versionId', authMiddleware, async (req, res) => {
+  try {
+    const { modId, versionId } = req.params;
+    const userId = req.user.id;
+
+    const modCheck = await pool.query(
+        'SELECT id FROM mods WHERE id = $1 AND author_id = $2',
+        [modId, userId]
+    );
+
+    if (modCheck.rows.length === 0) {
+      return res.status(403).json({ message: "Нет прав доступа" });
+    }
+
+    const versionCheck = await pool.query(
+        'SELECT file_path FROM mod_versions WHERE id = $1 AND mod_id = $2',
+        [versionId, modId]
+    );
+
+    if (versionCheck.rows.length === 0) {
+      return res.status(404).json({ message: "Версия не найдена" });
+    }
+
+    const filePath = versionCheck.rows[0].file_path;
+
+    await pool.query('DELETE FROM mod_versions WHERE id = $1', [versionId]);
+
+    if (filePath) {
+      const fileName = filePath.split('/').pop();
+      await deleteFile(fileName);
+    }
+
+    res.json({ message: "Версия успешно удалена" });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Ошибка при удалении версии' });
   }
 });
 

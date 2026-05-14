@@ -1,6 +1,13 @@
 :root {
   font-family: 'Noto', serif;
   font-size: 16px;
+  background-color: var(--bg-color);
+}
+
+html,
+body,
+#root {
+  height: 100%;
 }
 
 *,
@@ -55,7 +62,8 @@ h6 {
   font-weight: 400;
 }
 
-body, p {
+body,
+p {
   font-size: var(--p);
   font-weight: 400;
 }

@@ -27,6 +27,10 @@ export const getStatusName = (status: string) => {
       return 'Опасен'
     case 'pending':
       return 'В ожидании'
+    case 'error':
+      return 'Ошибка'
+    default:
+      return 'Нет'
   }
 }
 
