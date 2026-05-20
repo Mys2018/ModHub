@@ -60,11 +60,12 @@ export const ModInfoPage = () => {
                           getStatusName(modVersion.status)
                         }</p>
                         <a
-                          className={`${styles.downloadButton} ${modVersion.status === 'approved' ? '' : styles.unactive}`}
-                          href={modVersion.status === 'approved' ? modVersion.file_path : '#'}
-                          onClick={(e) => {
-                            if (modVersion.status !== 'approved') e.preventDefault();
-                          }}
+                            className={`${styles.downloadButton} ${modVersion.status === 'approved' ? '' : styles.unactive}`}
+                            href={modVersion.status === 'approved' ? `/api/mods/download/${modVersion.file_path}` : '#'}
+                            download
+                            onClick={(e) => {
+                              if (modVersion.status !== 'approved') e.preventDefault();
+                            }}
                         >
                           Скачать
                         </a>

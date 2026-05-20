@@ -3,7 +3,7 @@ const crypto = require('crypto')
 const pool = require('../db')
 const authMiddleware = require('../middleware/auth.middleware')
 const upload = require('../middleware/upload.middleware')
-const { uploadFile, deleteFile } = require('../storage/minio.client')
+const { minioClient, uploadFile, deleteFile } = require('../storage/minio.client')
 const path = require("node:path");
 const { sendModForScan } = require('../kafka/producer')
 
@@ -303,6 +303,29 @@ router.delete('/:modId/versions/:versionId', authMiddleware, async (req, res) =>
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Ошибка при удалении версии' });
+  }
+});
+
+// ЗАГРУЗКА МОДА
+router.get('/download/:filename', async (req, res) => {
+  try {
+    const filename = req.params.filename;
+    const bucketName = 'mods';
+
+    await minioClient.statObject(bucketName, filename);
+
+    res.setHeader('Content-Disposition', `attachment; filename="${encodeURIComponent(filename)}"`);
+    res.setHeader('Content-Type', 'application/octet-stream');
+
+    const dataStream = await minioClient.getObject(bucketName, filename);
+    dataStream.pipe(res);
+
+  } catch (error) {
+    console.error('Ошибка при скачивании файла:', error);
+    if (error.code === 'NotFound') {
+      return res.status(404).json({ error: 'Файл не найден на сервере' });
+    }
+    res.status(500).json({ error: 'Внутренняя ошибка сервера' });
   }
 });
 

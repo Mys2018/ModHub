@@ -16,7 +16,7 @@ const uploadFile = async (fileName, fileBuffer, mimeType) => {
       'Content-type': mimeType
     })
 
-    return `http://localhost:9000/${BUCKET_NAME}/${fileName}`
+    return fileName;
   } catch (e) {
     console.error('Ошибка при загрузке в MinIO:', err);
     throw err;
@@ -32,4 +32,4 @@ const deleteFile = async (fileName) => {
   }
 }
 
-module.exports = { uploadFile, deleteFile }
+module.exports = { minioClient, uploadFile, deleteFile };
