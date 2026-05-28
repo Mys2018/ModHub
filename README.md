@@ -105,9 +105,6 @@
 <img width="1920" height="913" alt="image" src="https://github.com/user-attachments/assets/d21cc7fe-3b47-49ca-8331-3559867da98b" />
 <img width="1920" height="912" alt="image" src="https://github.com/user-attachments/assets/7a85ccd2-01dd-401d-99a9-a75f79e9a131" />
 
-### Авторизация
-<img width="460" height="520" alt="image" src="https://github.com/user-attachments/assets/4b33f0ec-78f0-4336-ad04-1ea48e634e4c" /> 
-<img width="495" height="649" alt="image" src="https://github.com/user-attachments/assets/653591e8-537a-4fb3-8928-9c14f5d4b62b" />
 
 
 
